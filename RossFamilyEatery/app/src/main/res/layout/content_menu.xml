@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ben.rossfamilyeatery.MenuActivity"
-    tools:showIn="@layout/activity_menu">
+    tools:showIn="@layout/activity_menu"
+    android:id="@+id/layout">
 
     <ImageView
         android:layout_width="150dp"
@@ -47,7 +48,8 @@
         android:id="@+id/mainFoodButton"
         android:width="200dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="menuButtonPressed" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,16 +58,18 @@
         android:id="@+id/sidesButton"
         android:width="200dp"
         android:layout_below="@+id/mainFoodButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="menuButtonPressed" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Beverage"
+        android:text="Beverages"
         android:id="@+id/beverageButton"
         android:width="200dp"
         android:layout_below="@+id/sidesButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="menuButtonPressed" />
 
     <Button
         android:layout_width="wrap_content"
@@ -74,6 +78,38 @@
         android:id="@+id/dessertButton"
         android:width="200dp"
         android:layout_below="@+id/beverageButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="menuButtonPressed" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#00ffffff"
+        android:src="@mipmap/backimg"
+        android:onClick="backArrowPressed"
+        android:nestedScrollingEnabled="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/cartNumber"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/cartButton"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/itemAddedTextView"
+        android:layout_below="@+id/instructionText"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:gravity="center" />
 
 </RelativeLayout>

@@ -1,29 +1,189 @@
 package com.example.ben.rossfamilyeatery;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
+
+    private final String[] FOOD_TYPES = {"Main", "Sides" , "Beverages", "Desserts"};
+    private final String[] MAIN_FOODS = {"Burger","Pasta","Pizza","Chicken Sandwich",""};
+    private final String[] SIDE_FOODS = {"Fries","House Salad","Bean Soup","Onion Rings",""};
+    private final String[] BEVERAGE_OPTIONS = {"Water","Pop","Orange Juice","Milk",""};
+    private final String[] DESSERT_OPTIONS = {"Cheesecake","Giant Cookie","Rice Pudding","Brownie",""};
+
+    private ArrayList<Button> buttons;
+    private ArrayList<String> cart;
+    private TextView cartItemNumber,instructionText,itemAddedText;
+
+    private RelativeLayout layout;
+    private String orderType,foodType;
+    private Button buttonClicked;
+    private boolean secondMenu = false;
+
+    final Animation in = new AlphaAnimation(0.0f, 1.0f);
+    final Animation out = new AlphaAnimation(1.0f, 0.0f);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Get the order type
+        orderType = getIntent().getStringExtra("OrderType");
+        layout = (RelativeLayout)findViewById(R.id.layout);
+        cart = new ArrayList<>();
+        cartItemNumber = (TextView)findViewById(R.id.cartNumber);
+        instructionText = (TextView)findViewById(R.id.instructionText);
+        itemAddedText = (TextView)findViewById(R.id.itemAddedTextView);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        in.setDuration(3000);
+        out.setDuration(3000);
+        out.setAnimationListener(new Animation.AnimationListener() {
+
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                itemAddedText.setText("");
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
             }
         });
     }
 
+    //When the back arrow is pressed
+    public void backArrowPressed(View v)
+    {
+        onBackPressed();
+    }
+    //When the back hardware button is clicked
+    @Override
+    public void onBackPressed() {
+        if(!secondMenu)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            int j = 0;
+            for(Button button : buttons)
+            {
+                button.setText(FOOD_TYPES[j]);
+                j++;
+            }
+            secondMenu = false;
+            instructionText.setText("Please select an item");
+        }
+    }
+
+    //When a food type button is pressed
+    public void menuButtonPressed(View v)
+    {
+        //Get the pressed button text
+        buttonClicked = (Button)findViewById(v.getId());
+        foodType = buttonClicked.getText().toString();
+
+        secondMenu = true;
+        buttons = new ArrayList<>();
+        int j = 0;
+        instructionText.setText("Please select a food");
+
+
+        //Update the text of the buttons depending on which food type you selected
+        //Check if the food type was Main
+        if (foodType.equalsIgnoreCase(FOOD_TYPES[0])) {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View button = layout.getChildAt(i);
+                //Check if its a button
+                if (button instanceof Button) {
+                    Button updateButton = (Button) button;
+                    buttons.add(updateButton);
+                }
+            }
+            j = 0;
+            for (Button button : buttons) {
+                button.setText(MAIN_FOODS[j]);
+                j++;
+            }
+        }
+        //Check if the food type was Sides
+        else if (foodType.equalsIgnoreCase(FOOD_TYPES[1])) {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View button = layout.getChildAt(i);
+                //Check if its a button
+                if (button instanceof Button) {
+                    Button updateButton = (Button) button;
+                    buttons.add(updateButton);
+                }
+            }
+            j = 0;
+            for (Button button : buttons) {
+                button.setText(SIDE_FOODS[j]);
+                j++;
+            }
+        }
+        //Check if the food type was Beverages
+        else if (foodType.equalsIgnoreCase(FOOD_TYPES[2])) {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View button = layout.getChildAt(i);
+                //Check if its a button
+                if (button instanceof Button) {
+                    Button updateButton = (Button) button;
+                    buttons.add(updateButton);
+                }
+            }
+            j = 0;
+            for (Button button : buttons) {
+                button.setText(BEVERAGE_OPTIONS[j]);
+                j++;
+            }
+        }
+        //Check if the food type was Desserts
+        else if (foodType.equalsIgnoreCase(FOOD_TYPES[3])) {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View button = layout.getChildAt(i);
+                //Check if its a button
+                if (button instanceof Button) {
+                    Button updateButton = (Button) button;
+                    buttons.add(updateButton);
+                }
+            }
+            j = 0;
+            for (Button button : buttons) {
+                button.setText(DESSERT_OPTIONS[j]);
+                j++;
+            }
+        }
+        //Else a food item is selected, add to cart and update cart number
+        else
+        {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View button = layout.getChildAt(i);
+                //Check if its a button
+                if (button instanceof Button) {
+                    Button updateButton = (Button) button;
+                    buttons.add(updateButton);
+                }
+            }
+            cart.add(foodType);
+            cartItemNumber.setText(String.valueOf(cart.size()));
+            itemAddedText.setText(foodType + " has been added to your cart");
+            itemAddedText.startAnimation(in);
+            itemAddedText.startAnimation(out);
+        }
+    }
 }
