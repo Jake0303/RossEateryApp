@@ -26,4 +26,5 @@ public class OrderTypeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
 }

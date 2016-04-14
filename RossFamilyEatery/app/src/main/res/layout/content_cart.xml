@@ -27,7 +27,8 @@
         android:src="@mipmap/shoppingcart"
         android:background="#00ec1717"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="cartClicked" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,10 +41,20 @@
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true" />
 
-    <ScrollView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
+        android:id="@+id/cartList"
         android:layout_below="@+id/instructionsText"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/totalText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/totalText"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

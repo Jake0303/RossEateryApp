@@ -1,7 +1,9 @@
 package com.example.ben.rossfamilyeatery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -18,10 +20,18 @@ public class MenuActivity extends AppCompatActivity {
     private final String[] SIDE_FOODS = {"Fries","House Salad","Bean Soup","Onion Rings",""};
     private final String[] BEVERAGE_OPTIONS = {"Water","Pop","Orange Juice","Milk",""};
     private final String[] DESSERT_OPTIONS = {"Cheesecake","Giant Cookie","Rice Pudding","Brownie",""};
+    private final String[] MAIN_PRICES = {"$4.50","$4.50","$3.00","$5.75"};
+    private final String[] SIDE_PRICES = {"$1.50","$2.00","$2.75","$4.00"};
+    private final String[] BEVERAGE_PRICES = {"$3.00","$1.00","$2.00","$3.25"};
+    private final String[] DESSERT_PRICES = {"$8.00","$3.50","$5.00","$6.75"};
+
 
     private ArrayList<Button> buttons;
     private ArrayList<String> cart;
+    private ArrayList<String> prices;
+    private String currentPrice;
     private TextView cartItemNumber,instructionText,itemAddedText;
+    private int foodTypeSelected = 0;
 
     private RelativeLayout layout;
     private String orderType,foodType;
@@ -39,6 +49,7 @@ public class MenuActivity extends AppCompatActivity {
         orderType = getIntent().getStringExtra("OrderType");
         layout = (RelativeLayout)findViewById(R.id.layout);
         cart = new ArrayList<>();
+        prices = new ArrayList<>();
         cartItemNumber = (TextView)findViewById(R.id.cartNumber);
         instructionText = (TextView)findViewById(R.id.instructionText);
         itemAddedText = (TextView)findViewById(R.id.itemAddedTextView);
@@ -115,6 +126,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
             j = 0;
+            foodTypeSelected = 1;
             for (Button button : buttons) {
                 button.setText(MAIN_FOODS[j]);
                 j++;
@@ -131,6 +143,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
             j = 0;
+            foodTypeSelected = 2;
             for (Button button : buttons) {
                 button.setText(SIDE_FOODS[j]);
                 j++;
@@ -147,6 +160,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
             j = 0;
+            foodTypeSelected = 3;
             for (Button button : buttons) {
                 button.setText(BEVERAGE_OPTIONS[j]);
                 j++;
@@ -163,6 +177,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
             j = 0;
+            foodTypeSelected = 4;
             for (Button button : buttons) {
                 button.setText(DESSERT_OPTIONS[j]);
                 j++;
@@ -179,6 +194,28 @@ public class MenuActivity extends AppCompatActivity {
                     buttons.add(updateButton);
                 }
             }
+            for(int i = 0; i < buttons.size(); i++)
+            {
+                if(buttons.get(i).getText() == foodType)
+                {
+                    switch(foodTypeSelected)
+                    {
+                        case 1:
+                            prices.add(MAIN_PRICES[i]);
+                            break;
+                        case 2:
+                            prices.add(SIDE_PRICES[i]);
+                            break;
+                        case 3:
+                            prices.add(BEVERAGE_PRICES[i]);
+                            break;
+                        case 4:
+                            prices.add(DESSERT_PRICES[i]);
+                            break;
+                    }
+                    break;
+                }
+            }
             cart.add(foodType);
             cartItemNumber.setText(String.valueOf(cart.size()));
             itemAddedText.setText(foodType + " has been added to your cart");
@@ -186,4 +223,12 @@ public class MenuActivity extends AppCompatActivity {
             itemAddedText.startAnimation(out);
         }
     }
+    public void cartClicked(View v)
+    {
+        Intent i = new Intent(MenuActivity.this, CartActivity.class);
+        i.putStringArrayListExtra("cart",cart);
+        i.putStringArrayListExtra("prices",prices);
+        startActivity(i);
+    }
+
 }
