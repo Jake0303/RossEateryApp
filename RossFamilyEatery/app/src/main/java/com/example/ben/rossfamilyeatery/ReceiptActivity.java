@@ -10,34 +10,25 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+public class ReceiptActivity extends AppCompatActivity {
     private ArrayList<String> cart;
     private ArrayList<String> prices;
     private ListView list;
-    private TextView totalText;
-    private float total = 0f;
-    private String orderType;
+    private TextView totalText,orderTypeText;
+    private String orderType,total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_receipt);
+
         orderType = getIntent().getStringExtra("OrderType");
         cart = getIntent().getExtras().getStringArrayList("cart");
         prices = getIntent().getExtras().getStringArrayList("prices");
         totalText = (TextView) findViewById(R.id.totalText);
+        total = getIntent().getExtras().getString("Total");
+        orderTypeText = (TextView)findViewById(R.id.orderTypeText);
+        orderTypeText.setText(orderType);
 
-
-        for(int i = 0;i< cart.size();i++)
-        {
-            for(int j = 0;j< prices.size();j++)
-            {
-                if(i == j) {
-                    cart.set(i, cart.get(i)+"\t \t" + prices.get(j));
-                    String val = prices.get(j).replace("$","");
-                    total += Float.valueOf(val);
-                }
-            }
-        }
         totalText.setText("Total: $ "+String.valueOf(total));
         list = (ListView) findViewById(R.id.cartList);
 
@@ -50,16 +41,12 @@ public class CartActivity extends AppCompatActivity {
                 cart);
 
         list.setAdapter(arrayAdapter);
-
+        totalText.setText(total);
     }
 
-    public void checkoutButtonClick(View v)
+    public void ClickedNewOrder(View v)
     {
-        Intent i = new Intent(CartActivity.this, ReceiptActivity.class);
-        i.putStringArrayListExtra("cart",cart);
-        i.putStringArrayListExtra("prices",prices);
-        i.putExtra("OrderType",orderType);
-        i.putExtra("Total",totalText.getText());
+        Intent i = new Intent(ReceiptActivity.this, OrderTypeActivity.class);
         startActivity(i);
     }
 }

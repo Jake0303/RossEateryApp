@@ -3,7 +3,6 @@ package com.example.ben.rossfamilyeatery;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -228,6 +227,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent i = new Intent(MenuActivity.this, CartActivity.class);
         i.putStringArrayListExtra("cart",cart);
         i.putStringArrayListExtra("prices",prices);
+        i.putExtra("OrderType",orderType);
         startActivity(i);
     }
 
