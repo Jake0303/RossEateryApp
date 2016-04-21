@@ -50,7 +50,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/totalText"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -58,8 +59,8 @@
         android:layout_height="wrap_content"
         android:text="Checkout"
         android:id="@+id/checkoutButton"
-        android:onClick="checkoutButtonClick"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/instructionsText" />
+        android:layout_alignBottom="@+id/totalText"
+        android:layout_alignEnd="@+id/cartList"
+        android:onClick="checkoutButtonClick" />
 
 </RelativeLayout>

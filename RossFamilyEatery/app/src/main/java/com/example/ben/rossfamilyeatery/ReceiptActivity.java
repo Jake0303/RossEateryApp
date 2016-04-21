@@ -26,10 +26,10 @@ public class ReceiptActivity extends AppCompatActivity {
         prices = getIntent().getExtras().getStringArrayList("prices");
         totalText = (TextView) findViewById(R.id.totalText);
         total = getIntent().getExtras().getString("Total");
-        orderTypeText = (TextView)findViewById(R.id.orderTypeText);
+        orderTypeText = (TextView) findViewById(R.id.orderTypeText);
         orderTypeText.setText(orderType);
 
-        totalText.setText("Total: $ "+String.valueOf(total));
+        totalText.setText("Total: $ " + String.valueOf(total));
         list = (ListView) findViewById(R.id.cartList);
 
         // This is the array adapter, it takes the context of the activity as a
@@ -42,11 +42,11 @@ public class ReceiptActivity extends AppCompatActivity {
 
         list.setAdapter(arrayAdapter);
         totalText.setText(total);
-    }
 
-    public void ClickedNewOrder(View v)
-    {
+
+    public void ClickedNewOrder(View v) {
         Intent i = new Intent(ReceiptActivity.this, OrderTypeActivity.class);
         startActivity(i);
     }
 }
+

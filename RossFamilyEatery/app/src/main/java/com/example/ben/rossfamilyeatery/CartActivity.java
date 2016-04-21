@@ -27,18 +27,16 @@ public class CartActivity extends AppCompatActivity {
         totalText = (TextView) findViewById(R.id.totalText);
 
 
-        for(int i = 0;i< cart.size();i++)
-        {
-            for(int j = 0;j< prices.size();j++)
-            {
-                if(i == j) {
-                    cart.set(i, cart.get(i)+"\t \t" + prices.get(j));
-                    String val = prices.get(j).replace("$","");
+        for (int i = 0; i < cart.size(); i++) {
+            for (int j = 0; j < prices.size(); j++) {
+                if (i == j) {
+                    cart.set(i, cart.get(i) + "\t \t" + prices.get(j));
+                    String val = prices.get(j).replace("$", "");
                     total += Float.valueOf(val);
                 }
             }
         }
-        totalText.setText("Total: $ "+String.valueOf(total));
+        totalText.setText("Total: $ " + String.valueOf(total));
         list = (ListView) findViewById(R.id.cartList);
 
         // This is the array adapter, it takes the context of the activity as a
@@ -50,16 +48,16 @@ public class CartActivity extends AppCompatActivity {
                 cart);
 
         list.setAdapter(arrayAdapter);
-
     }
 
-    public void checkoutButtonClick(View v)
-    {
+
+
+    public void checkoutButtonClick(View v) {
         Intent i = new Intent(CartActivity.this, ReceiptActivity.class);
-        i.putStringArrayListExtra("cart",cart);
-        i.putStringArrayListExtra("prices",prices);
-        i.putExtra("OrderType",orderType);
-        i.putExtra("Total",totalText.getText());
+        i.putStringArrayListExtra("cart", cart);
+        i.putStringArrayListExtra("prices", prices);
+        i.putExtra("OrderType", orderType);
+        i.putExtra("Total", totalText.getText());
         startActivity(i);
     }
 }
