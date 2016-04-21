@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private final String[] FOOD_TYPES = {"Main", "Sides" , "Beverages", "Desserts"};
-    private final String[] MAIN_FOODS = {"Burger","Pasta","Pizza","Chicken Sandwich",""};
+    private final String[] FOOD_TYPES = {"Main", "Sides" , "Drinks", "Desserts"};
+    private final String[] MAIN_FOODS = {"Burger","Pasta","Pizza","Steak",""};
     private final String[] SIDE_FOODS = {"Fries","House Salad","Bean Soup","Onion Rings",""};
     private final String[] BEVERAGE_OPTIONS = {"Water","Pop","Orange Juice","Milk",""};
     private final String[] DESSERT_OPTIONS = {"Cheesecake","Giant Cookie","Rice Pudding","Brownie",""};
@@ -97,7 +97,6 @@ public class MenuActivity extends AppCompatActivity {
                 j++;
             }
             secondMenu = false;
-            instructionText.setText("Please select an item");
         }
     }
 
@@ -111,7 +110,6 @@ public class MenuActivity extends AppCompatActivity {
         secondMenu = true;
         buttons = new ArrayList<>();
         int j = 0;
-        instructionText.setText("Please select a food");
 
 
         //Update the text of the buttons depending on which food type you selected

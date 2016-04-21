@@ -33,32 +33,41 @@
         android:gravity="center" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Delivery"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:width="200dp"
-        android:onClick="buttonPressed" />
+        android:onClick="buttonPressed"
+        android:textSize="20dp"
+        android:background="#dac4ad"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Takeout"
         android:id="@+id/button2"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:width="200dp"
-        android:onClick="buttonPressed" />
+        android:onClick="buttonPressed"
+        android:textSize="20dp"
+        android:background="#dac4ad"
+        android:layout_marginTop="15dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Eat-In"
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:width="200dp"
-        android:onClick="buttonPressed" />
+        android:onClick="buttonPressed"
+        android:textSize="20dp"
+        android:background="#dac4ad"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>

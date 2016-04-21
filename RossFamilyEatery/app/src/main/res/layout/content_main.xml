@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ben.rossfamilyeatery.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:background="#dac4ad">
 
     <ImageView
         android:layout_width="500dp"
@@ -20,19 +21,19 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:scaleType="centerCrop"
-        android:src="@mipmap/hdlogo" />
+        android:src="@mipmap/betterlogo" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ross Family Eatery Ordering Application"
+        android:text="Ross Family Eatery "
         android:id="@+id/appNameTextVIew"
         android:textStyle="bold"
-        android:textSize="19dp"
+        android:textSize="25dp"
         android:gravity="center"
         android:layout_below="@+id/logoImageVIew"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,8 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="V 1.0"
         android:id="@+id/versionTextView"
+        android:textStyle="bold"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp"
-        android:textStyle="bold" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

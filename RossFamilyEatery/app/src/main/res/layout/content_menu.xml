@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,7 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ben.rossfamilyeatery.MenuActivity"
     tools:showIn="@layout/activity_menu"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:background="#ffffff">
 
     <ImageView
         android:layout_width="150dp"
@@ -33,55 +34,78 @@
         android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="65dp"
         android:id="@+id/cartButton"
         android:src="@mipmap/shoppingcart"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="#00ec1717"
         android:contextClickable="false"
-        android:onClick="cartClicked" />
+        android:onClick="cartClicked"
+        android:background="#ffffff" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Main"
         android:id="@+id/mainFoodButton"
-        android:width="200dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="menuButtonPressed" />
+        android:onClick="menuButtonPressed"
+        android:background="#dac4ad"
+        android:padding="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:textSize="20dp"
+        android:paddingLeft="0dp"
+        android:layout_below="@+id/itemAddedTextView"
+        android:layout_alignStart="@+id/instructionText"
+        android:layout_marginRight="-35dp"
+        android:layout_marginLeft="30dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Sides"
         android:id="@+id/sidesButton"
         android:width="200dp"
-        android:layout_below="@+id/mainFoodButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="menuButtonPressed" />
+        android:onClick="menuButtonPressed"
+        android:background="#dac4ad"
+        android:padding="15dp"
+        android:textSize="20dp"
+        android:layout_marginRight="-35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignTop="@+id/mainFoodButton"
+        android:layout_alignEnd="@+id/instructionText" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beverages"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
+        android:text="Drinks"
         android:id="@+id/beverageButton"
         android:width="200dp"
-        android:layout_below="@+id/sidesButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="menuButtonPressed" />
+        android:onClick="menuButtonPressed"
+        android:background="#dac4ad"
+        android:padding="15dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/mainFoodButton"
+        android:layout_alignParentStart="false"
+        android:layout_marginRight="-35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         android:text="Desserts"
         android:id="@+id/dessertButton"
         android:width="200dp"
-        android:layout_below="@+id/beverageButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="menuButtonPressed" />
+        android:onClick="menuButtonPressed"
+        android:background="#dac4ad"
+        android:padding="15dp"
+        android:textSize="20dp"
+        android:layout_marginRight="-35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignTop="@+id/beverageButton"
+        android:layout_alignEnd="@+id/instructionText" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -100,9 +124,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/cartNumber"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/cartButton"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/cartButton"
+        android:layout_alignStart="@+id/cartButton"
+        android:layout_marginTop="17dp" />
 
     <TextView
         android:layout_width="match_parent"

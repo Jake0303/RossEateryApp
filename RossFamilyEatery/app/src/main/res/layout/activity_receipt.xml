@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.ben.rossfamilyeatery.CartActivity"
-    tools:showIn="@layout/activity_cart"
-    android:background="#dac4ad">
+    tools:context="com.example.ben.rossfamilyeatery.ReceiptActivity">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:src="@mipmap/shoppingcart"
-        android:background="#00ec1717"
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView2"
+        android:src="@mipmap/hdlogo"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="cartClicked" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Your order"
+        android:text="Receipt"
         android:id="@+id/instructionsText"
         android:textSize="28dp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cartList"
+        android:layout_below="@+id/instructionsText"
         android:layout_alignParentEnd="true"
-        android:background="#dac4ad"
-        android:layout_toEndOf="@+id/totalText"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageButton"
-        android:layout_above="@+id/checkoutButton" />
+        android:layout_above="@+id/totalText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,16 +44,28 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/totalText"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Checkout"
-        android:id="@+id/checkoutButton"
-        android:onClick="checkoutButtonClick"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/instructionsText" />
+        android:text="Start new order"
+        android:id="@+id/newOrderButton"
+        android:layout_alignBottom="@+id/totalText"
+        android:layout_alignEnd="@+id/cartList"
+        android:onClick="ClickedNewOrder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/orderTypeText"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/instructionsText"
+        android:layout_alignEnd="@+id/cartList" />
+
 
 </RelativeLayout>
