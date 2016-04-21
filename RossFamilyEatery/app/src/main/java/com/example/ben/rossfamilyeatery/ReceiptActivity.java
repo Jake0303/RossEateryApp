@@ -42,6 +42,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
         list.setAdapter(arrayAdapter);
         totalText.setText(total);
+    }
 
 
     public void ClickedNewOrder(View v) {
